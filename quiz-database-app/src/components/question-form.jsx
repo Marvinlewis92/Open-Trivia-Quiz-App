@@ -1,24 +1,23 @@
 import { useState } from "react";
+import Question from "./question";
+import Answers from "./answers";
+
 
 function QuestionForm({ questions }) {
 
-    console.log(questions)
-
-    
-    if (!questions || !questions.results) {
-        return <div>No questions available.</div>;
-    }
-
-    
     return (
         <>
             <h1>Questions</h1>
+            
         {questions.results.map((question, idx) => { 
-            console.log(question);
+            const numberQuestions = question.question
+            const numberedAnswers = question.incorrect_answers
             return(
-            <div key={idx}>
-                {question.question}
-                </div>  
+                <div key={idx}>
+                    <Question question={numberQuestions} />
+                    <Answers answer={numberedAnswers} />
+                </div>
+                
             ) 
         })}
         

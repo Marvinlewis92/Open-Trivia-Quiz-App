@@ -109,6 +109,7 @@ function Home(){
         <div>
             <label htmlFor="category">Choose a Category:</label><br />
             <select name="category" id="category" value={formData.category} onChange={handleChange}>
+                <option value=""></option>
                 <option value="21">Sports</option>
                 <option value="20">Mythology</option>
                 <option value="22">Geography</option>
@@ -119,6 +120,7 @@ function Home(){
          <div>
             <label htmlFor="difficulty">Choose Difficulty:</label><br />
             <select name="difficulty" id="difficulty" value={formData.difficulty} onChange={handleChange}>
+                <option value=""></option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
@@ -132,7 +134,7 @@ function Home(){
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {success && <div style={{ color: 'green' }}>{success}</div>}
 
-      <QuestionForm questions ={question}/> 
+      {success && <QuestionForm questions ={question}/> }
 
         </>
     )

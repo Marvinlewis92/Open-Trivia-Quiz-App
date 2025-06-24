@@ -59,7 +59,12 @@ function Home(){
       const data = await response.json();
       setSuccess("questions loaded succesfully")
       setQuestion(data);
-
+      setFormData({
+        firstName: '',
+        lastName: '',
+        category: '',
+        difficulty: '',
+    })
       
 
     } catch (e) {

@@ -1,13 +1,21 @@
 import { useState } from "react";
 
-function Answers({ answer }) {
+function Answers({ answer, correct }) {
+    console.log(answer, correct)
     
     return(
-        <>
-        {answer.forEach(ans => {
-            console.log(ans)
-        })}
-        </>
+            <select>
+             {answer.map(ans => ( 
+                        <option key={ans}
+                        value={ans}
+                        >
+                            {ans} 
+                        </option>
+                    
+                ))}
+                <option value={correct}>{correct}</option>
+            </select>
+        
     )
 }
 

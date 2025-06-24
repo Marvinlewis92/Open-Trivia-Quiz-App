@@ -4,9 +4,9 @@ function Question({ question}) {
     // console.log(question)
 
     return(
-        <p>
+        <>
             {question}
-        </p>
+        </>
            
     )
 }

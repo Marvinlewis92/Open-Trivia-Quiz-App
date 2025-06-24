@@ -1,5 +1,6 @@
 import { useState } from "react";
 import QuestionForm from "./question-form";
+import ResultPage from "./resultPage";
 
 function Home(){
 
@@ -49,7 +50,7 @@ function Home(){
     }
 
     try {
-      const response = await fetch(`https://opentdb.com/api.php?amount=10&category=${formData.category}&difficulty=${formData.difficulty}&type=multiple`);
+      const response = await fetch(`https://opentdb.com/api.php?amount=1&category=${formData.category}&difficulty=${formData.difficulty}&type=multiple`);
 
       if (!response.ok) {
         throw new Error('Failed to get questions');
@@ -59,12 +60,12 @@ function Home(){
       const data = await response.json();
       setSuccess("questions loaded succesfully")
       setQuestion(data);
-      setFormData({
-        firstName: '',
-        lastName: '',
-        category: '',
-        difficulty: '',
-    })
+    //   setFormData({
+    //     firstName: '',
+    //     lastName: '',
+    //     category: '',
+    //     difficulty: '',
+    // })
       
 
     } catch (e) {
@@ -138,8 +139,7 @@ function Home(){
 
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {success && <div style={{ color: 'green' }}>{success}</div>}
-
-      {success && <QuestionForm questions ={question}/> }
+      {success && <QuestionForm questions ={question} data={formData}/> }
 
         </>
     )

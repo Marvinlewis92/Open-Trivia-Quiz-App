@@ -6,6 +6,7 @@ function ResultPage({ data }){
         <h1>
             Correct! Good Job {data.firstName} {data.lastName} 
         </h1>
+        
         </>
     )
 } 

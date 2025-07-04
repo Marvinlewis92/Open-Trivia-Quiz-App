@@ -57,16 +57,18 @@ function Home(){
       }
 
       
+      
       const data = await response.json();
       setSuccess("questions loaded succesfully")
       setQuestion(data);
-    //   setFormData({
-    //     firstName: '',
-    //     lastName: '',
-    //     category: '',
-    //     difficulty: '',
-    // })
-      
+      //   setFormData({
+        //     firstName: '',
+        //     lastName: '',
+        //     category: '',
+        //     difficulty: '',
+        // })
+        
+        console.log(data)
 
     } catch (e) {
         console.error(e)
@@ -139,7 +141,7 @@ function Home(){
 
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {success && <div style={{ color: 'green' }}>{success}</div>}
-      {success && <QuestionForm questions ={question} data={formData}/> }
+      {success && <QuestionForm questions ={question} data={formData} setFormData={setFormData} setSuccess={setSuccess} /> }
 
         </>
     )

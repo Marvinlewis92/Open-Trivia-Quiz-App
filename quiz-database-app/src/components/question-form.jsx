@@ -2,10 +2,11 @@ import { useState } from "react";
 import ResultPage from "./resultPage";
 
 
-function QuestionForm({ questions, data }) {
+function QuestionForm({ questions, data, setFormData, setSuccess }) {
 
     const[formAnswer, setFormAnswer] = useState(" ");
     const[result, setResult] = useState(false);
+    const[error, setError] = useState('');
 
     const handleAnswerChange = (e) => {
         const { name, value } = e.target;
@@ -28,11 +29,26 @@ function QuestionForm({ questions, data }) {
 
         if (!validateForm) {
             return
-        }
+        };
         
          if (formAnswer === questions.results[0].correct_answer) {
             setResult(true)
-         }
+            setError(false)
+         } else setError("Please try again")
+
+    }
+
+    const handleReset = () => {
+        setFormData({
+        firstName: '',
+        lastName: '',
+        category: '',
+        difficulty: '',
+    });
+
+    setSuccess(false);
+    setResult(false);
+    setError(false);
     }
 
 
@@ -69,7 +85,9 @@ function QuestionForm({ questions, data }) {
             ) 
         })}
 
+        {error && <p>{error}</p>}
         {result && <ResultPage data={data} />}
+        {result && <button type="button" onClick={handleReset}>Reset</button>}
         
     </>
         )
